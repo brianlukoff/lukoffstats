@@ -1,0 +1,11 @@
+Package: lukoffstats
+Title: Companion functions and data for Lukoff, ___, 1e
+Version: 1.0
+Authors@R: 
+    person("Brian", "Lukoff", , "brian.lukoff@utexas.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5044-7324"))
+Description: What the package does (one paragraph).
+License: TBD
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
