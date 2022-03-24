@@ -31,6 +31,7 @@ z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater")
   cat(sprintf("Alternative hypothesis: %s\n", alternative))
   cat(sprintf("Sample proportion: %.4f\n", p.hat))
   cat("\n")
-  cat(sprintf("p-value = %.24f\n", p.value))
+  cat(sprintf("Test statistic: z = %.4f\n", z))
+  cat(sprintf("p-value: %.24f\n", p.value))
   cat(sprintf("%d%% confidence interval: %.4f to %.4f", 100 * conf.level, ci.lower.bound, ci.upper.bound))
 }
