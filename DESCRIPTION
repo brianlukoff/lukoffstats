@@ -4,6 +4,8 @@ Version: 1.0
 Authors@R: 
     person("Brian", "Lukoff", , "brian.lukoff@utexas.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5044-7324"))
+    person("Martha", "Essak", , "", role = c("aut", "cre"),
+           comment = c(ORCID = ""))
 Description: What the package does (one paragraph).
 License: TBD
 Encoding: UTF-8
