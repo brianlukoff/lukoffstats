@@ -16,20 +16,20 @@ z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater")
   ci.upper.bound <- p.hat + critical.value * standard.error
   if (is.na(alternative) || alternative == "two.sided") {
     p.value <- 2 * pnorm(-abs(z))
-    alternative <- sprintf("p not equal to %.4f", p0)
+    alternative <- sprintf("p not equal to %s", format(p0))
   } else if (alternative == "less") {
     p.value <- pnorm(z)
-    alternative <- sprintf("p < %.4f", p0)
+    alternative <- sprintf("p < %s", format(p0))
   } else if (alternative == "greater") {
     p.value <- 1 - pnorm(z)
-    alternative <- sprintf("p > %.4f", p0)
+    alternative <- sprintf("p > %s", format(p0))
   }
   cat(sprintf("z-test for proportions\n"))
-  cat(sprintf("Null hypothesis: p = %.4f\n", p0))
+  cat(sprintf("Null hypothesis: p = %s\n", format(p0)))
   cat(sprintf("Alternative hypothesis: %s\n", alternative))
-  cat(sprintf("Sample proportion: %.4f\n", p.hat))
+  cat(sprintf("Sample proportion: %s\n", format(p.hat)))
   cat("\n")
-  cat(sprintf("Test statistic: z = %.4f\n", z))
-  cat(sprintf("p-value: %e\n", p.value))
-  cat(sprintf("%d%% confidence interval: %.4f to %.4f", 100 * conf.level, ci.lower.bound, ci.upper.bound))
+  cat(sprintf("Test statistic: z = %s\n", format(z)))
+  cat(sprintf("p-value: %s\n", format(p.value)))
+  cat(sprintf("%d%% confidence interval: %s to %s", 100 * conf.level, format(ci.lower.bound), format(ci.upper.bound)))
 }
