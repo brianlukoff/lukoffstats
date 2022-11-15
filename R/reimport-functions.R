@@ -1,4 +1,4 @@
-# Re-export functions from e1071.
+# Re-export functions from e1071 and rcompanion.
 
 #' @importFrom e1071 skewness
 #' @name skewness
@@ -10,3 +10,7 @@ NULL
 #' @export
 NULL
 
+#' @importFrom rcompanion cramerV
+#' @name cramerV
+#' @export
+NULL
