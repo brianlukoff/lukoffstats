@@ -13,14 +13,14 @@ check.regression.assumptions <- function(model) {
        xlab="Predicted values", ylab="Residuals",
        ylim=c(min(resid, -3*se), max(resid, 3*se)),
        main="Residual plot")
-  abline(0,0, lty=2)
+  abline(0, 0, col="blue", lty=2)
   abline(2*se, 0, col="red", lty=2)
   abline(-2*se, 0, col="red", lty=2)
 
-  plot(resid, main="Residuals vs. observation number")
+  plot(resid, main="Residuals vs. row number", ylab="Residuals", xlab="Row number")
   abline(0,0, lty=2, col="red")
 
-  hist(resid, prob=TRUE)
+  hist(resid, prob=TRUE, xlab="Residuals")
   curve(dnorm(x, mean=mean(resid), sd=sd(resid)), col="red", add=TRUE)
 
   qqnorm(resid, ylab="Standardized residuals", xlab = "Normal scores")
