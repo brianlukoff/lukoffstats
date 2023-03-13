@@ -10,6 +10,7 @@
 #' @export
 z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater"), conf.level=0.95) {
   alternative <- match.arg(alternative)
+  data.name <- deparse(substitute(p.hat))
   z <- (p.hat - p0) / sqrt(p0 * (1 - p0) / n)
   critical.value <- qnorm(1 - (1 - conf.level) / 2)
   standard.error <- sqrt(p.hat * (1 - p.hat) / n)
@@ -36,7 +37,7 @@ z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater")
     alternative = alternative,
     method = "z test for a proportion",
     sample.size = n,
-    data.name = p0
+    data.name = data.name
   )
   class(rval) <- "htest"
   return(rval)
