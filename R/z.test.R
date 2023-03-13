@@ -9,27 +9,35 @@
 #' @importFrom stats pnorm qnorm
 #' @export
 z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater"), conf.level=0.95) {
+  alternative <- match.arg(alternative)
   z <- (p.hat - p0) / sqrt(p0 * (1 - p0) / n)
   critical.value <- qnorm(1 - (1 - conf.level) / 2)
   standard.error <- sqrt(p.hat * (1 - p.hat) / n)
-  ci.lower.bound <- p.hat - critical.value * standard.error
-  ci.upper.bound <- p.hat + critical.value * standard.error
   if (is.na(alternative) || alternative == "two.sided") {
     p.value <- 2 * pnorm(-abs(z))
-    alternative <- sprintf("p not equal to %s", format(p0))
   } else if (alternative == "less") {
     p.value <- pnorm(z)
-    alternative <- sprintf("p < %s", format(p0))
   } else if (alternative == "greater") {
     p.value <- 1 - pnorm(z)
-    alternative <- sprintf("p > %s", format(p0))
   }
-  cat(sprintf("z-test for proportions\n"))
-  cat(sprintf("Null hypothesis: p = %s\n", format(p0)))
-  cat(sprintf("Alternative hypothesis: %s\n", alternative))
-  cat(sprintf("Sample proportion: %s\n", format(p.hat)))
-  cat("\n")
-  cat(sprintf("Test statistic: z = %s\n", format(z)))
-  cat(sprintf("p-value: %s\n", format(p.value)))
-  cat(sprintf("%d%% confidence interval: %s to %s", 100 * conf.level, format(ci.lower.bound), format(ci.upper.bound)))
+  cint <- p.hat + c(-1, 1) * critical.value * standard.error
+  attr(cint, "conf.level") <- conf.level
+  names(p.hat) <- "sample proportion"
+  names(p0) <- "proportion"
+  names(standard.error) <- "standard error"
+  names(z) <- "z"
+  rval <- list(
+    statistic = z,
+    parameter = standard.error,
+    p.value = p.value,
+    conf.int = cint,
+    estimate = p.hat,
+    null.value = p0,
+    alternative = alternative,
+    method = "z test for a proportion",
+    sample.size = n,
+    data.name = p0
+  )
+  class(rval) <- "htest"
+  return(rval)
 }
