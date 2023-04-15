@@ -7,7 +7,7 @@
 z.test(
   p.hat,
   n,
-  p0 = 0,
+  p0,
   alternative = c("two.sided", "less", "greater"),
   conf.level = 0.95
 )

@@ -8,7 +8,7 @@
 #' @param conf.level The confidence level for the confidence interval. Defaults to 0.95 for a 95% confidence interval.
 #' @importFrom stats pnorm qnorm
 #' @export
-z.test <- function(p.hat, n, p0=0, alternative=c("two.sided", "less", "greater"), conf.level=0.95) {
+z.test <- function(p.hat, n, p0, alternative=c("two.sided", "less", "greater"), conf.level=0.95) {
   alternative <- match.arg(alternative)
   data.name <- deparse(substitute(p.hat))
   z <- (p.hat - p0) / sqrt(p0 * (1 - p0) / n)
