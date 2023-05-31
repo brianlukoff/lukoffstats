@@ -1,9 +1,9 @@
-#' Diagnostic plots for checking regression assumptions
+#' Diagnostic plots for checking regression conditions
 #'
-#' Produces diagnostic plots to aid in checking the LINE regression assumptions.
+#' Produces diagnostic plots to aid in checking the LINE regression conditions.
 #' @param model A linear regression model produced by the `lm` function.
 #' @export
-check.regression.assumptions <- function(model) {
+check.regression.conditions <- function(model) {
   se <- summary(model)$sigma
   predicted <- predict(model)
   resid <- residuals(model)
