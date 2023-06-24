@@ -5,6 +5,6 @@
 #' @export
 cramer.v <- function(tbl) {
   n <- sum(tbl)
-  chi.squared <- as.numeric(chisq.test(tbl, correct=F)$statistic)
+  chi.squared <- suppressWarnings(as.numeric(chisq.test(tbl, correct=F)$statistic))
   sqrt((chi.squared/n) / min(nrow(tbl)-1, ncol(tbl)-1))
 }
