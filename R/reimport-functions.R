@@ -9,8 +9,3 @@ NULL
 #' @name kurtosis
 #' @export
 NULL
-
-#' @importFrom rcompanion cramerV
-#' @name cramerV
-#' @export
-NULL
