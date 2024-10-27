@@ -1,4 +1,4 @@
-# Re-export functions from e1071 and rcompanion.
+# Re-export functions from e1071.
 
 #' @importFrom e1071 skewness
 #' @name skewness
