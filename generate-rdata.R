@@ -1,0 +1,6 @@
+rm(list = ls())
+setwd("~/workspaces/lukoffstats/data")
+sapply(list.files(), load, environment())
+setwd("~/workspaces/lukoffstats/R")
+sapply(list.files(), source)
+save.image(file='~/workspaces/lukoffstats/lukoffstats.Rdata')
